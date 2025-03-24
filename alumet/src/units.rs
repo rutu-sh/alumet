@@ -53,6 +53,8 @@ pub enum Unit {
     /// Amount of information (1 byte = 8 bits).
     Byte,
 
+    
+
     /// A custom unit
     Custom {
         /// The unique name (case sensitive) of the unit, as specified by the UCUM.

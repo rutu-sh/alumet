@@ -303,6 +303,10 @@ fn detect_hierarchy<P: AsRef<Path>>(
                     continue;
                 }
 
+                if suffix.map(|m| m.as_str()) == Some("crit_alarm") {
+                    continue;
+                }
+
                 let channel_id: u32 = groups["id"]
                     .parse()
                     .with_context(|| format!("Invalid channel id: {}", &groups["id"]))?;
