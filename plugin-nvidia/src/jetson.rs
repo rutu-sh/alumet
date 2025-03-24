@@ -287,7 +287,7 @@ fn detect_hierarchy<P: AsRef<Path>>(
     // Look for channels and metrics.
     // - `channels_dir`: path of the form <sensor_path>/hwmon/hwmon<id>
 
-    println!("detect hierarchy: {}", sys_ina.display());
+    println!("detect hierarchy: {}", sys_ina.as_ref().display());
 
     let sensor_channels = |channels_dir: &Path| -> anyhow::Result<Vec<InaChannel>> {
         let mut channel_metrics = HashMap::with_capacity(2);
