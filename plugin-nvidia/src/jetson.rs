@@ -13,7 +13,7 @@ use alumet::{
     resources::{Resource, ResourceConsumer},
     units::{PrefixedUnit, Unit},
 };
-use anyhow::{anyhow, Context};
+// use anyhow::{anyhow, Context};
 use regex::{Match, Regex};
 
 /// Detected INA sensor.
