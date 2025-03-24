@@ -178,6 +178,9 @@ fn detect_hierarchy_modern<P: AsRef<Path>>(sys_ina: P) -> anyhow::Result<Vec<Ina
     /// Look for a path of the form <sensor_path>/hwmon/hwmon<id>
     fn sensor_channels_dir(sensor_path: &Path) -> anyhow::Result<PathBuf> {
         let hwmon = sensor_path.join("hwmon/hwmon2");
+        let pp = sensor_path.as_ref();
+        println!("pp: {}", pp.display());
+
         return Ok(hwmon);
     }
 
