@@ -295,9 +295,13 @@ fn detect_hierarchy<P: AsRef<Path>>(
             let entry = entry?;
             let path = entry.path();
             let filename = path.file_name().unwrap().to_string_lossy().to_string();
+
+            println!("processing file: {}", filename);
+
             if let Some(groups) = metric_filename_pattern.captures(&filename) {
                 // Extract the prefix, suffix and channel id.
                 let (prefix, suffix) = (&groups.name("prefix"), &groups.name("suffix"));
+
 
                 if prefix.map(|m| m.as_str()) == Some("shunt") {
                     continue;
@@ -306,6 +310,7 @@ fn detect_hierarchy<P: AsRef<Path>>(
                 if suffix.map(|m| m.as_str()) == Some("crit_alarm") {
                     continue;
                 }
+
 
                 let channel_id: u32 = groups["id"]
                     .parse()
