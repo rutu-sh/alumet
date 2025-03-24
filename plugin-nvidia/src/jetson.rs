@@ -299,7 +299,7 @@ fn detect_hierarchy<P: AsRef<Path>>(
                 // Extract the prefix, suffix and channel id.
                 let (prefix, suffix) = (&groups.name("prefix"), &groups.name("suffix"));
 
-                if let Some("shunt") = prefix {
+                if prefix == "shunt" {
                     continue;
                 }
 
