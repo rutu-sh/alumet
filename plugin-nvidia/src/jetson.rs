@@ -292,6 +292,7 @@ fn detect_hierarchy<P: AsRef<Path>>(
     let sensor_channels = |channels_dir: &Path| -> anyhow::Result<Vec<InaChannel>> {
         let mut channel_metrics = HashMap::with_capacity(2);
         let mut channel_labels = HashMap::with_capacity(2);
+        println!("channels dir: {}", channels_dir.display());
         for entry in std::fs::read_dir(channels_dir)? {
             let entry = entry?;
             let path = entry.path();
