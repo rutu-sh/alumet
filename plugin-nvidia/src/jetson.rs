@@ -181,7 +181,7 @@ fn detect_hierarchy_modern<P: AsRef<Path>>(sys_ina: P) -> anyhow::Result<Vec<Ina
 
     /// Look for a path of the form <sensor_path>/hwmon/hwmon<id>
     fn sensor_channels_dir(sensor_path: &Path) -> anyhow::Result<PathBuf> {
-        return Ok(PathBuf.from("/sys/bus/i2c/drivers/ina3221/1-0040/hwmon/hwmon2".to_string()));
+        return Ok(PathBuf::from("/sys/bus/i2c/drivers/ina3221/1-0040/hwmon/hwmon2"));
     }
 
     fn guess_channel_unit(prefix: &Option<Match>) -> Option<PrefixedUnit> {
