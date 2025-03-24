@@ -168,8 +168,8 @@ pub fn detect_ina_sensors() -> anyhow::Result<Vec<InaSensor>> {
     Ok(res)
 }
 
-const SYSFS_INA_OLD: &str = "/sys/bus/i2c/drivers/ina3221x";
-const SYSFS_INA: &str = "/sys/bus/i2c/drivers/ina3221";
+const SYSFS_INA_OLD: &str = "/sys/bus/i2c/drivers/ina3221/1-0040";
+const SYSFS_INA: &str = "/sys/bus/i2c/drivers/ina3221/1-0040";
 
 /// Detect the available INA sensors, assuming that Nvidia Jetpack version >= 5.0 is installed.
 ///
@@ -177,17 +177,8 @@ const SYSFS_INA: &str = "/sys/bus/i2c/drivers/ina3221";
 fn detect_hierarchy_modern<P: AsRef<Path>>(sys_ina: P) -> anyhow::Result<Vec<InaSensor>> {
     /// Look for a path of the form <sensor_path>/hwmon/hwmon<id>
     fn sensor_channels_dir(sensor_path: &Path) -> anyhow::Result<PathBuf> {
-        let hwmon = sensor_path.join("hwmon");
-        for child in std::fs::read_dir(&hwmon)
-            .with_context(|| format!("failed to list content of directory {}", hwmon.display()))?
-        {
-            let child = child?;
-            let path = child.path();
-            if path.file_name().unwrap().to_string_lossy().starts_with("hwmon") {
-                return Ok(path);
-            }
-        }
-        Err(anyhow!("not found"))
+        let hwmon = sensor_path.join("hwmon/hwmon2");
+        return Ok(hwmon);
     }
 
     fn guess_channel_unit(prefix: &Option<Match>) -> Option<PrefixedUnit> {

@@ -56,7 +56,7 @@ impl PowerEvent {
         attr.config = self.code.into();
         attr.type_ = pmu_type;
         attr.size = core::mem::size_of_val(&attr) as u32;
-        log::trace!("perf_event_open {attr:?}");
+        // log::trace!("perf_event_open {attr:?}");
 
         let result = unsafe { sys::perf_event_open(&mut attr, pid, cpu, -1, 0) };
         if result == -1 {
