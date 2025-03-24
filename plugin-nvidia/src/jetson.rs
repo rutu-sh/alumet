@@ -298,6 +298,11 @@ fn detect_hierarchy<P: AsRef<Path>>(
             if let Some(groups) = metric_filename_pattern.captures(&filename) {
                 // Extract the prefix, suffix and channel id.
                 let (prefix, suffix) = (&groups.name("prefix"), &groups.name("suffix"));
+
+                if let Some("shunt") = prefix {
+                    continue;
+                }
+
                 let channel_id: u32 = groups["id"]
                     .parse()
                     .with_context(|| format!("Invalid channel id: {}", &groups["id"]))?;
@@ -311,6 +316,8 @@ fn detect_hierarchy<P: AsRef<Path>>(
                     let label = std::fs::read_to_string(path)?;
                     channel_labels.insert(channel_id, label);
                 } else {
+
+
                     // This file contains the (automatically updated) value of a metric.
                     let unit = guess_channel_unit(prefix).with_context(|| {
                         format!(
