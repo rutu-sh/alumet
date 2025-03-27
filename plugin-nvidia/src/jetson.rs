@@ -379,8 +379,7 @@ fn detect_hierarchy<P: AsRef<Path>>(
                     let channels = sensor_channels(&sensor_channels_dir(&path)?)?;
 
                     println!("detect sensor: {}", i2c_id);
-                    println!("detect channels: {}", channels.len());
-                    println!("detect channel unit: {}", guess_channel_unit(&prefix, &channels[0])?);
+                    println!("detect channels count: {}", channels.len());
 
                     sensors.push(InaSensor { path, channels, i2c_id });
                 }
