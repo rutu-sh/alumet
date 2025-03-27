@@ -360,7 +360,8 @@ fn detect_hierarchy<P: AsRef<Path>>(
         Ok(res)
     };
 
-    let dir_path: &Path = PathBuf::from("/sys/bus/i2c/drivers/ina3221/1-0040/hwmon");
+    let pb = PathBuf::from("/sys/bus/i2c/drivers/ina3221/1-0040/hwmon");
+    let dir_path: &Path = pb.as_path();
     let mut sensors = Vec::new();
     match std::fs::read_dir(dir_path) {
         Ok(dir) => {
