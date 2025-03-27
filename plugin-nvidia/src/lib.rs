@@ -119,7 +119,7 @@ impl NvidiaPlugin {
             log::info!("Found INA sensor {} at {}", sensor.i2c_id, sensor.path.display());
             for chan in &sensor.channels {
                 let description = chan.description.as_deref().unwrap_or("?");
-                log::debug!("\t- channel {} \"{}\": {}", chan.id, chan.label, description);
+                log::info!("\t- channel {} \"{}\": {}", chan.id, chan.label, description);
             }
         }
         let source = jetson::JetsonInaSource::open_sensors(sensors, alumet)?;
