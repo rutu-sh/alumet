@@ -377,6 +377,11 @@ fn detect_hierarchy<P: AsRef<Path>>(
                     let i2c_id = path.file_name().unwrap().to_str().unwrap().to_owned();
                     // Discover all the sensor channels (with their metrics).
                     let channels = sensor_channels(&sensor_channels_dir(&path)?)?;
+
+                    println!("detect sensor: {}", i2c_id);
+                    println!("detect channels: {}", channels.len());
+                    println!("detect channel unit: {}", guess_channel_unit(&prefix, &channels[0])?);
+
                     sensors.push(InaSensor { path, channels, i2c_id });
                 }
             }
