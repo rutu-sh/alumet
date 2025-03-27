@@ -365,8 +365,10 @@ fn detect_hierarchy<P: AsRef<Path>>(
     match std::fs::read_dir(dir_path) {
         Ok(dir) => {
             for entry in dir {
-                println!("dir entry: {}", entry?.path().display());
                 let entry = entry?;
+
+                println!("entry path: {:?}", entry.path());
+
                 if entry.metadata()?.is_dir() {
                     // Each subdirectory corresponds to one INA 3221 sensor.
                     let path = entry.path();
