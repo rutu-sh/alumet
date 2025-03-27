@@ -288,6 +288,9 @@ fn detect_hierarchy<P: AsRef<Path>>(
     println!("detect hierarchy: {}", sys_ina.as_ref().display());
 
     let sensor_channels = |channels_dir: &Path| -> anyhow::Result<Vec<InaChannel>> {
+
+        println!("detect channels: {}", channels_dir.display());
+
         let mut channel_metrics = HashMap::with_capacity(2);
         let mut channel_labels = HashMap::with_capacity(2);
         println!("channels dir: {}", channels_dir.display());
