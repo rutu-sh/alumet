@@ -299,7 +299,7 @@ fn detect_hierarchy<P: AsRef<Path>>(
             let path = entry.path();
             let filename = path.file_name().unwrap().to_string_lossy().to_string();
 
-            println!("processing file: {}", filename);
+            // println!("processing file: {}", filename);
 
             if let Some(groups) = metric_filename_pattern.captures(&filename) {
                 // Extract the prefix, suffix and channel id.
@@ -365,6 +365,7 @@ fn detect_hierarchy<P: AsRef<Path>>(
     match std::fs::read_dir(dir_path) {
         Ok(dir) => {
             for entry in dir {
+                println!("dir entry: {}", entry?.path().display());
                 let entry = entry?;
                 if entry.metadata()?.is_dir() {
                     // Each subdirectory corresponds to one INA 3221 sensor.
