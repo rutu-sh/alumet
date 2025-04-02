@@ -341,7 +341,6 @@ fn detect_hierarchy<P: AsRef<Path>>(
                         )
                     })?;
                     println!("channel_id: {}", channel_id);
-                    println!("label: {}", label);
                     println!("unit: {}, path: {}, name: {}", unit, path.display(), format_metric_name(&prefix, &suffix));
 
                     channel_metrics
