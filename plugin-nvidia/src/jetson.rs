@@ -366,7 +366,7 @@ fn detect_hierarchy<P: AsRef<Path>>(
             .into_iter()
             .map(|(id, metrics)| InaChannel {
                 id,
-                label: channel_labels.get(&id).map_or_else(|| "?", |v| v).to_owned(),
+                label: channel_labels.get(&id).map_or_else(|| format!("CHANNEL_{}", id.to_string()), |v| v).to_owned(),
                 metrics,
                 description: None, // added later
             })
