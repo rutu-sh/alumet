@@ -360,7 +360,10 @@ fn detect_hierarchy<P: AsRef<Path>>(
                 description: None, // added later
             })
             .collect();
-        println!("detect result: {}", res);
+        println!("channel metrics");
+        for (key, value) in &channel_metrics {
+            println!("{}: {}", key, value);
+        }
         Ok(res)
     };
 
