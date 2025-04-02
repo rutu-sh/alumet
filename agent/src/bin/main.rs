@@ -42,6 +42,7 @@ fn load_plugins_metadata() -> Vec<PluginMetadata> {
             plugin_perf::PerfPlugin,
             plugin_procfs::ProcfsPlugin,
             plugin_nvidia::NvidiaPlugin,
+            plugin_energy_attribution::EnergyAttributionPlugin
         ]);
     }
 
