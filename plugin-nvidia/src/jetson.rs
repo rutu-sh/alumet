@@ -329,6 +329,7 @@ fn detect_hierarchy<P: AsRef<Path>>(
                 if is_label {
                     // This file contains the label of the channel.
                     let label = std::fs::read_to_string(path)?;
+                    println!("label: {}, path: {}", label, filename);
                     channel_labels.insert(channel_id, label);
                 } else {
 
@@ -354,6 +355,7 @@ fn detect_hierarchy<P: AsRef<Path>>(
                 }
             }
         }
+
         let res = channel_metrics
             .into_iter()
             .map(|(id, metrics)| InaChannel {
