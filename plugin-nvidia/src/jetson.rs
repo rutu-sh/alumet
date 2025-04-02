@@ -363,7 +363,7 @@ fn detect_hierarchy<P: AsRef<Path>>(
 
         println!("printing result");
         for c in &res {
-            println!("id: {}, label: {}, metrics: {:?}", c.id, c.label, c.metrics);
+            println!("label: {}, metrics: {:?}", c.label, c.metrics);
         }
         Ok(res)
     };
