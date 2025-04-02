@@ -299,7 +299,7 @@ fn detect_hierarchy<P: AsRef<Path>>(
             let path = entry.path();
             let filename = path.file_name().unwrap().to_string_lossy().to_string();
 
-            if filename.ends_with("_max_alarm") {
+            if filename.ends_with("_max_alarm") || filename.ends_with("_crit_alarm") {
                 continue;
             }
 
