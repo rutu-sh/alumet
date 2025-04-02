@@ -299,6 +299,9 @@ fn detect_hierarchy<P: AsRef<Path>>(
             let path = entry.path();
             let filename = path.file_name().unwrap().to_string_lossy().to_string();
 
+            println!("detect file: {}", path.display());
+            println!("detect filename: {}", filename);
+
             // println!("processing file: {}", filename);
 
             if let Some(groups) = metric_filename_pattern.captures(&filename) {
