@@ -360,8 +360,11 @@ fn detect_hierarchy<P: AsRef<Path>>(
                 description: None, // added later
             })
             .collect();
+
+
+        let temp_res = channel_metrics.clone()
         println!("channel metrics");
-        for (key, value) in &channel_metrics {
+        for (key, value) in res {
             println!("-- {}", key);
         }
         Ok(res)
