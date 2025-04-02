@@ -360,6 +360,7 @@ fn detect_hierarchy<P: AsRef<Path>>(
                 description: None, // added later
             })
             .collect();
+        println!("detect result: {}", res);
         Ok(res)
     };
 
