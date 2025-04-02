@@ -329,7 +329,7 @@ fn detect_hierarchy<P: AsRef<Path>>(
                 if is_label {
                     // This file contains the label of the channel.
                     let label = std::fs::read_to_string(path)?;
-                    println!("label: {}, path: {}", label, filename);
+                    println!("id: {}, label: {}, path: {}", channel_id, label, filename);
                     channel_labels.insert(channel_id, label);
                 } else {
 
