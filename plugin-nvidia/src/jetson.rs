@@ -302,6 +302,10 @@ fn detect_hierarchy<P: AsRef<Path>>(
             // println!("detect file: {}", path.display());
             // println!("detect filename: {}", filename);
 
+            if filename == "crit_alarm" {
+                continue;
+            }
+
             // println!("processing file: {}", filename);
 
             if let Some(groups) = metric_filename_pattern.captures(&filename) {
