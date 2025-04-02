@@ -363,7 +363,7 @@ fn detect_hierarchy<P: AsRef<Path>>(
 
 
         println!("channel metrics");
-        for (key, value) in res {
+        for (key, value) in &res {
             println!("-- {}", key);
         }
         Ok(res)
