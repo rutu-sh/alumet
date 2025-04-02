@@ -340,6 +340,10 @@ fn detect_hierarchy<P: AsRef<Path>>(
                             path.display()
                         )
                     })?;
+                    println!("channel_id: {}", channel_id);
+                    println!("label: {}", label);
+                    println!("unit: {}, path: {}, name: {}", unit, path.display(), format_metric_name(&prefix, &suffix));
+
                     channel_metrics
                         .entry(channel_id)
                         .or_insert_with(|| Vec::with_capacity(5))
@@ -361,10 +365,6 @@ fn detect_hierarchy<P: AsRef<Path>>(
             })
             .collect();
 
-        println!("printing result");
-        for c in &res {
-            println!("label: {}, metrics: {:?}", c.label, c.metrics);
-        }
         Ok(res)
     };
 
